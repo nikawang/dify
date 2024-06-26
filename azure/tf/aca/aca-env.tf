@@ -48,6 +48,12 @@ resource "azurerm_container_app" "nginx" {
   revision_mode                = "Single"
 
   template {
+    http_scale_rule {
+      name = "nginx"
+      concurrent_requests = "10"
+    }
+    max_replicas = 10
+    min_replicas = 0
     container {
       name   = "nginx"
       image  = "nginx:latest"
@@ -99,6 +105,12 @@ resource "azurerm_container_app" "ssrfproxy" {
   revision_mode                = "Single"
 
   template {
+    tcp_scale_rule {
+      name = "ssrfproxy"
+      concurrent_requests = "10"
+    }
+    max_replicas = 10
+    min_replicas = 0
     container {
       name   = "ssrfproxy"
       image  = "ubuntu/squid:latest"
@@ -146,6 +158,12 @@ resource "azurerm_container_app" "sandbox" {
   revision_mode                = "Single"
 
   template {
+    tcp_scale_rule {
+      name = "sandbox"
+      concurrent_requests = "10"
+    }
+    max_replicas = 10
+    min_replicas = 0
     container {
       name   = "langgenius"
       image  = var.dify-sandbox-image
@@ -212,6 +230,13 @@ resource "azurerm_container_app" "worker" {
   revision_mode                = "Single"
 
   template {
+
+    tcp_scale_rule {
+      name = "worker"
+      concurrent_requests = "10"
+    }
+    max_replicas = 10
+    min_replicas = 1
     container {
       name   = "langgenius"
       image  = var.dify-api-image
@@ -342,6 +367,12 @@ resource "azurerm_container_app" "api" {
   revision_mode                = "Single"
 
   template {
+    tcp_scale_rule {
+      name = "api"
+      concurrent_requests = "10"
+    }
+    max_replicas = 10
+    min_replicas = 0
     container {
       name   = "langgenius"
       image  = var.dify-api-image
@@ -603,6 +634,12 @@ resource "azurerm_container_app" "web" {
   revision_mode                = "Single"
 
   template {
+    tcp_scale_rule {
+      name = "web"
+      concurrent_requests = "10"
+    }
+    max_replicas = 10
+    min_replicas = 0
     container {
       name   = "langgenius"
       image  = "langgenius/dify-web:0.6.11"
