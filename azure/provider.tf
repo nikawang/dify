@@ -5,15 +5,6 @@ terraform {
       version = "3.109.0"
        }
     }
-  # backend "azurerm" {
-  #     resource_group_name  = "czstor"
-  #     storage_account_name = "czstor"
-  #     container_name       = "tfstate"
-  #     key                  = "eufy.terraform.tfstate"
-
-  #     use_azuread_auth     = true
-  #     subscription_id      = "bdeaa921-64ee-48ff-93ee-72c272228c23"
-  # }
 
 }
 
